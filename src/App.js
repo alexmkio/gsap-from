@@ -1,25 +1,19 @@
-import logo from './logo.svg';
+import { gsap } from "gsap";
+import { useEffect, useState } from 'react'
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [state, setState] = useState(true);
+
+  useEffect(() => {
+    gsap.from(".circle", { duration: 2, y: 150 });
+  }, [state]);
+
+  const handleClick = () => {
+    setState(!state)
+  }
+
+  return <div className="circle" onClick={handleClick}></div>;
 }
 
 export default App;
